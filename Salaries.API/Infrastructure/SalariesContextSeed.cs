@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Salaries.Domain.AggregatesModel.DivisionAggregate;
+using Salaries.Domain.AggregatesModel.OfficeAggregate;
+using Salaries.Domain.AggregatesModel.PositionAggregate;
+using Salaries.Domain.AggregatesModel.SalaryAggregate;
 
 namespace Salaries.API.Infrastructure
 {
