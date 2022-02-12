@@ -13,4 +13,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Salaries.Domain\Salaries.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
