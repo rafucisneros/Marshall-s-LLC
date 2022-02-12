@@ -11,6 +11,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
+using Salaries.API.Infrastructure;
+using Salaries.API.Infrastructure.Factories;
+using Salaries.Infrastructure;
 
 namespace Salaries.API
 {
@@ -26,12 +30,23 @@ namespace Salaries.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Salaries.API", Version = "v1" });
             });
+
+            var serviceProvider = services.BuildServiceProvider();
+
+            var env = serviceProvider.GetService<IWebHostEnvironment>();
+            var settings = serviceProvider.GetService<IOptions<SalariesSettings>>();
+            var logger = serviceProvider.GetService<ILogger<SalariesContextSeed>>();
+
+            SalariesDbContextFactory contextFactory = new SalariesDbContextFactory();
+            SalariesContext context = contextFactory.CreateDbContext(Array.Empty<string>());
+            new SalariesContextSeed()
+                .SeedAsync(context, env, logger)
+                .Wait();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +69,7 @@ namespace Salaries.API
             {
                 endpoints.MapControllers();
             });
+            
         }
     }
 }

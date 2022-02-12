@@ -20,7 +20,7 @@ namespace Salaries.API.Infrastructure
             {
                 using (context)
                 {
-                    context.Database.Migrate();
+                    //context.Database.Migrate();
 
                     #region Populate Offices Table
                     if (!context.Offices.Any())
@@ -59,7 +59,7 @@ namespace Salaries.API.Infrastructure
                     #endregion
 
                     #region Populate Positions Table
-                    if (!context.Divisions.Any())
+                    if (!context.Positions.Any())
                     {
                         var strings = new List<string> { "a" };
                         List<Position> positions = new List<Position>
@@ -101,8 +101,6 @@ namespace Salaries.API.Infrastructure
                     }
                     #endregion
 
-
-                    
                     #region Populate Salaries Table
                     if (!context.Salaries.Any())
                     {
@@ -128,7 +126,7 @@ namespace Salaries.API.Infrastructure
                         #region Generate 100 Employees
                         var random = new Random();
                         List<Salary> salaries = new List<Salary>();
-                        foreach (var i in Enumerable.Range(0,10))
+                        foreach (var i in Enumerable.Range(0,100))
                         {
                             #region Generate fixed values for the new employee
                             // Pick a full name, code and identification number not used yet
@@ -154,7 +152,7 @@ namespace Salaries.API.Infrastructure
                             }
 
                             // Generate a birthdate
-                            DateTime initBirthDate = new DateTime(970, 1, 1);
+                            DateTime initBirthDate = new DateTime(1970, 1, 1);
                             DateTime birthDate = initBirthDate.AddDays(random.Next(10950)); // range of ~30 years
                             #endregion
 
@@ -187,15 +185,19 @@ namespace Salaries.API.Infrastructure
                                     }
                                     else // Other periods
                                     {
-                                        beginDate = beginDate.AddMonths(random.Next(20)); // Up tp 20 months of difference between periods
+                                        int monthsLastPeriod = beginDate.Month <= periodMonth ? 
+                                            periodMonth - beginDate.Month + 1: 12 - beginDate.Month + periodMonth + 1;
+                                        beginDate = beginDate
+                                            .AddMonths(monthsLastPeriod) // Sum months duration in the last period
+                                            .AddMonths(random.Next(1, 20)); // Up tp 20 months of difference between periods
                                         periodYear = beginDate.Year;
                                         periodMonth = beginDate.Month;
                                     }
                                     // Pick a position
-                                    position = context.Positions.OrderBy(position => random.Next()).FirstOrDefault();
+                                    position = context.Positions.OrderBy(position => Guid.NewGuid()).FirstOrDefault();
 
                                     // Pick an office
-                                    officeId = context.Offices.OrderBy(office => random.Next()).FirstOrDefault().Id;
+                                    officeId = context.Offices.OrderBy(office => Guid.NewGuid()).FirstOrDefault().Id;
 
                                     // Calculate new grade
                                     grade = random.Next(grade, 21); // Will only increase
@@ -250,7 +252,7 @@ namespace Salaries.API.Infrastructure
                                 };
                                 salaries.Add(salary);
                                 period++;
-                                if (random.NextDouble() <= 0.15) // 15% probabilities to change period
+                                if (random.NextDouble() <= 0.1) // 10% probabilities to change period
                                 {
                                     calculateNewPeriod = true;
                                 }
