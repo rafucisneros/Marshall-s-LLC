@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salaries.Domain", "Salaries
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salaries.Infrastructure", "Salaries.Infrastructure\Salaries.Infrastructure.csproj", "{224D6ACC-00D0-4210-860A-3AE00A320F69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salaries.ASPFront", "Salaries.ASPFront\Salaries.ASPFront.csproj", "{6A3FBCB4-061A-4365-A678-E1F63E6CA746}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salaries.ASPFront", "Salaries.ASPFront\Salaries.ASPFront.csproj", "{6A3FBCB4-061A-4365-A678-E1F63E6CA746}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salaries.AngularFront", "Salaries.AngularFront\Salaries.AngularFront.csproj", "{92FC632A-F2A5-4C3E-9758-CE90492C1C65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{6A3FBCB4-061A-4365-A678-E1F63E6CA746}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A3FBCB4-061A-4365-A678-E1F63E6CA746}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A3FBCB4-061A-4365-A678-E1F63E6CA746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92FC632A-F2A5-4C3E-9758-CE90492C1C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92FC632A-F2A5-4C3E-9758-CE90492C1C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92FC632A-F2A5-4C3E-9758-CE90492C1C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92FC632A-F2A5-4C3E-9758-CE90492C1C65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{BCD65559-E649-4FB0-BA02-B53FB6BD9C5A} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
 		{224D6ACC-00D0-4210-860A-3AE00A320F69} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
 		{6A3FBCB4-061A-4365-A678-E1F63E6CA746} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
+		{92FC632A-F2A5-4C3E-9758-CE90492C1C65} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9982B3A-EBC8-4962-A1FA-38682AD830F7}

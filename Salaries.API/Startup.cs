@@ -23,6 +23,7 @@ namespace Salaries.API
 {
     public class Startup
     {
+        private readonly string _CorsPolicy = "CorsPolicy";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -56,6 +57,18 @@ namespace Salaries.API
             services.AddDbContext<SalariesContext>(c => c.UseSqlServer(Configuration["ConnectionString"]),
                 ServiceLifetime.Scoped);
             services.AddScoped<ISalaryRepository, SalaryRepository>();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: _CorsPolicy, builder =>
+                {
+                    builder.AllowAnyHeader();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyOrigin();
+                    //builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "http://localhost:4200/")
+                    //    .AllowAnyHeader().AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +81,8 @@ namespace Salaries.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Salaries.API v1"));
             }
 
+            app.UseCors(_CorsPolicy);
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -78,7 +93,7 @@ namespace Salaries.API
             {
                 endpoints.MapControllers();
             });
-            
+
         }
     }
 }

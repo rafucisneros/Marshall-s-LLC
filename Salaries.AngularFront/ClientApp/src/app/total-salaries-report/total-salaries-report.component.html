@@ -1,0 +1,57 @@
+<div>
+  <h1>
+    Reporte de Salarios Totales
+  </h1>
+  <div>
+    <p>
+      Puede usar los siguientes filtrar de acuerdo a un empleado seleccionado:
+    </p>
+  </div>
+  <div style="display: flex; justify-content: space-between;">
+    <button (click)="addFilters(['ByOffice', 'ByGrade'])">Misma oficina y grado</button>
+    <button (click)="addFilters(['ByGrade'])">Todas las oficinas y el mismo grado</button>
+    <button (click)="addFilters(['ByPosition', 'ByGrade'])">Misma posicion y grado</button>
+    <button (click)="addFilters(['ByGrade'])">Todas las posiciones y el mismo grado</button>
+  </div>
+  <div style="margin-top: 5px;">
+    <button (click)="clearFilters()">LimpiarFiltros</button>
+  </div>
+  <br>
+  <div>
+    <div style="display: flex; justify-content: space-between;">
+      <button disabled *ngIf="page == 1">Pagina Anterior</button>
+      <button *ngIf="page > 1" (click)="previousPage()">Pagina Anterior</button>
+      <button (click)="nextPage()">Proxima Pagina</button>
+    </div>
+    <table class="table">
+      <thead>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Oficina</th>
+        <th>Division</th>
+        <th>Posicion</th>
+        <th>Grado</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Fecha de Inicio</th>
+        <th>Número de Identificación</th>
+        <th>Salario Total</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let salary of salaries;" 
+          [ngClass]="salary.employeeCode == selectedEmployee ? 'selectedEmployee': ''"  (click)="selectEmployee(salary.employeeCode)"
+        >
+          <td>{{salary.employeeCode}}</td>
+          <td>{{salary.employeeFullName}}</td>
+          <td>{{salary.office}}</td>
+          <td>{{salary.division}}</td>
+          <td>{{salary.position}}</td>
+          <td>{{salary.grade}}</td>
+          <td>{{salary.birthDay}}</td>
+          <td>{{salary.beginDate}}</td>
+          <td>{{salary.identificationNumber}}</td>
+          <td>{{salary.salary}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

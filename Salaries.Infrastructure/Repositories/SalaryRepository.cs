@@ -93,43 +93,7 @@ namespace Salaries.Infrastructure.Repositories
             return result;
         }
 
-        // Requirement 4
-        public List<Salary> FindByGrade(int grade, int page=1, int pageSize=20)
-        {
-            var query = from _salary in _context.Salaries
-                where _salary.Grade == grade
-                select _salary;
-            List<Salary> result = query
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
-            return result;
-        }
-
-        public List<Salary> FindByOfficeAndGrade(int officeId, int grade, int page=1, int pageSize=20)
-        {
-            var query = from _salary in _context.Salaries
-                where _salary.OfficeId == officeId && _salary.Grade == grade
-                select _salary;
-            List<Salary> result = query
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
-            return result;
-        }
-
-        public List<Salary> FindByPositionAndGrade(int positionId, int grade, int page=1, int pageSize=20)
-        {
-            var query = from _salary in _context.Salaries
-                        where _salary.PositionId == positionId && _salary.Grade == grade
-                        select _salary;
-            List<Salary> result = query
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
-            return result;
-        }
-
+        // Requirement 3 and 4
         public List<TotalSalary> TotalSalariesReport(Dictionary<ReportFilter, string> filters, int page = 1,
             int pageSize = 20)
         {
