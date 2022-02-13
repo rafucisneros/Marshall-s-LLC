@@ -74,12 +74,18 @@ namespace Salaries.Infrastructure.Repositories
         }
 
         // Requirment 5
-        public List<Salary> FindByEmployeeCode(string employeeCode, int page = 0, int pageSize = 20)
+        public List<Salary> FindByEmployeeCode(string employeeCode, int page = 1, int pageSize = 20)
         {
             var query = from _salary in _context.Salaries
                         where _salary.EmployeeCode == employeeCode
                         select _salary;
             List<Salary> result = query
+                .Include(salary => salary.Division)
+                .Include(salary => salary.Position)
+                .Include(salary => salary.Office)
+                .OrderByDescending(salary => salary.BeginDate)
+                .ThenByDescending(salary => salary.Year)
+                .ThenByDescending(salary => salary.Month)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
@@ -87,7 +93,7 @@ namespace Salaries.Infrastructure.Repositories
         }
 
         // Requirement 4
-        public List<Salary> FindByGrade(int grade, int page = 0, int pageSize = 20)
+        public List<Salary> FindByGrade(int grade, int page=1, int pageSize=20)
         {
             var query = from _salary in _context.Salaries
                 where _salary.Grade == grade
@@ -99,7 +105,7 @@ namespace Salaries.Infrastructure.Repositories
             return result;
         }
 
-        public List<Salary> FindByOfficeAndGrade(int officeId, int grade, int page = 0, int pageSize = 20)
+        public List<Salary> FindByOfficeAndGrade(int officeId, int grade, int page=1, int pageSize=20)
         {
             var query = from _salary in _context.Salaries
                 where _salary.OfficeId == officeId && _salary.Grade == grade
@@ -111,7 +117,7 @@ namespace Salaries.Infrastructure.Repositories
             return result;
         }
 
-        public List<Salary> FindByPositionAndGrade(int positionId, int grade, int page = 0, int pageSize = 20)
+        public List<Salary> FindByPositionAndGrade(int positionId, int grade, int page=1, int pageSize=20)
         {
             var query = from _salary in _context.Salaries
                         where _salary.PositionId == positionId && _salary.Grade == grade

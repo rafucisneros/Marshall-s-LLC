@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Salaries", "Salaries", "{22C3499B-0E50-41B8-A992-1E94CD832B95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salaries.API", "Salaries.API\Salaries.API.csproj", "{49E96FD5-51A1-427C-AF38-9454EA055384}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salaries.API", "Salaries.API\Salaries.API.csproj", "{49E96FD5-51A1-427C-AF38-9454EA055384}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salaries.Domain", "Salaries.Domain\Salaries.Domain.csproj", "{BCD65559-E649-4FB0-BA02-B53FB6BD9C5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salaries.Domain", "Salaries.Domain\Salaries.Domain.csproj", "{BCD65559-E649-4FB0-BA02-B53FB6BD9C5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salaries.Infrastructure", "Salaries.Infrastructure\Salaries.Infrastructure.csproj", "{224D6ACC-00D0-4210-860A-3AE00A320F69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salaries.Infrastructure", "Salaries.Infrastructure\Salaries.Infrastructure.csproj", "{224D6ACC-00D0-4210-860A-3AE00A320F69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salaries.ASPFront", "Salaries.ASPFront\Salaries.ASPFront.csproj", "{6A3FBCB4-061A-4365-A678-E1F63E6CA746}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{224D6ACC-00D0-4210-860A-3AE00A320F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{224D6ACC-00D0-4210-860A-3AE00A320F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{224D6ACC-00D0-4210-860A-3AE00A320F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A3FBCB4-061A-4365-A678-E1F63E6CA746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A3FBCB4-061A-4365-A678-E1F63E6CA746}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A3FBCB4-061A-4365-A678-E1F63E6CA746}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A3FBCB4-061A-4365-A678-E1F63E6CA746}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 		{49E96FD5-51A1-427C-AF38-9454EA055384} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
 		{BCD65559-E649-4FB0-BA02-B53FB6BD9C5A} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
 		{224D6ACC-00D0-4210-860A-3AE00A320F69} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
+		{6A3FBCB4-061A-4365-A678-E1F63E6CA746} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9982B3A-EBC8-4962-A1FA-38682AD830F7}
