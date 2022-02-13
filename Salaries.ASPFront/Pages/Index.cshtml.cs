@@ -70,10 +70,8 @@ namespace Salaries.ASPFront.Pages
                     DateTime lastBeginDate =
                         EmployeeInfo.SalariesInfo.OrderByDescending(s => s.BeginDate).First().BeginDate;
                     EmployeeInfo.EmployeeBonus = salaries
-                        .Where(s => s.BeginDate == lastBeginDate)
-                        .OrderByDescending(s => s.Year)
-                        .ThenByDescending(s => s.Month)
                         .Take(3)
+                        .Where(s => s.BeginDate == lastBeginDate)
                         .Sum(s => s.BaseSalary) / 3;
                 }
             }
