@@ -13,4 +13,9 @@
     <ProjectReference Include="..\Salaries.Infrastructure\Salaries.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Application\Commands\DomainEventHandlers\SalaryCreated\" />
+    <Folder Include="DTOs\" />
+  </ItemGroup>
+
 </Project>

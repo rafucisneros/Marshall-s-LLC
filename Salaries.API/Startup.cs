@@ -11,10 +11,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Salaries.API.Infrastructure;
 using Salaries.API.Infrastructure.Factories;
+using Salaries.Domain.AggregatesModel.SalaryAggregate;
 using Salaries.Infrastructure;
+using Salaries.Infrastructure.Repositories;
 
 namespace Salaries.API
 {
@@ -42,11 +45,17 @@ namespace Salaries.API
             var settings = serviceProvider.GetService<IOptions<SalariesSettings>>();
             var logger = serviceProvider.GetService<ILogger<SalariesContextSeed>>();
 
+            // Create the database
             SalariesDbContextFactory contextFactory = new SalariesDbContextFactory();
             SalariesContext context = contextFactory.CreateDbContext(Array.Empty<string>());
             new SalariesContextSeed()
                 .SeedAsync(context, env, logger)
                 .Wait();
+
+            // Inject the DB Context and repository
+            services.AddDbContext<SalariesContext>(c => c.UseSqlServer(Configuration["ConnectionString"]),
+                ServiceLifetime.Scoped);
+            services.AddScoped<ISalaryRepository, SalaryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
