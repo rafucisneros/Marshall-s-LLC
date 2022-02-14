@@ -37,8 +37,7 @@ namespace Salaries.API.Infrastructure
                             new Office { Name = "Argentina" },
                             new Office { Name = "España" },
                             new Office { Name = "Ecuador" },
-                        }
-                        ;
+                        };
                         context.Offices.AddRange(offices);
                         await context.SaveChangesAsync();
                     }
@@ -55,8 +54,7 @@ namespace Salaries.API.Infrastructure
                                 new Division { Name = "Marketing" },
                                 new Division { Name = "Sales" },
                                 new Division { Name = "IT" },
-                            }
-                            ;
+                            };
                         context.Divisions.AddRange(divisions);
                         await context.SaveChangesAsync();
                     }
@@ -98,8 +96,7 @@ namespace Salaries.API.Infrastructure
                                 new Position { Name = "QA", Division = 5 },
                                 new Position { Name = "Project Manager", Division = 5 },
                                 new Position { Name = "Director", Division = 5 },
-                            }
-                            ;
+                            };
                         context.Positions.AddRange(positions);
                         await context.SaveChangesAsync();
                     }

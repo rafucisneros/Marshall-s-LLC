@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salaries.Infrastructure", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salaries.ASPFront", "Salaries.ASPFront\Salaries.ASPFront.csproj", "{6A3FBCB4-061A-4365-A678-E1F63E6CA746}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salaries.AngularFront", "Salaries.AngularFront\Salaries.AngularFront.csproj", "{92FC632A-F2A5-4C3E-9758-CE90492C1C65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Salaries.AngularFront", "Salaries.AngularFront\Salaries.AngularFront.csproj", "{92FC632A-F2A5-4C3E-9758-CE90492C1C65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Salaries.Tests", "Salaries.Tests\Salaries.Tests.csproj", "{69FCAE40-B171-400F-89C0-65614E8AED1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{92FC632A-F2A5-4C3E-9758-CE90492C1C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92FC632A-F2A5-4C3E-9758-CE90492C1C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92FC632A-F2A5-4C3E-9758-CE90492C1C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69FCAE40-B171-400F-89C0-65614E8AED1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69FCAE40-B171-400F-89C0-65614E8AED1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69FCAE40-B171-400F-89C0-65614E8AED1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69FCAE40-B171-400F-89C0-65614E8AED1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{224D6ACC-00D0-4210-860A-3AE00A320F69} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
 		{6A3FBCB4-061A-4365-A678-E1F63E6CA746} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
 		{92FC632A-F2A5-4C3E-9758-CE90492C1C65} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
+		{69FCAE40-B171-400F-89C0-65614E8AED1D} = {22C3499B-0E50-41B8-A992-1E94CD832B95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9982B3A-EBC8-4962-A1FA-38682AD830F7}

@@ -87,14 +87,19 @@ namespace Salaries.Domain.AggregatesModel.SalaryAggregate
                 throw new SalariesDomainException("Grade must be greater than 0.");
             }
 
-            if (Year < 0 && Month < 0)
+            if (Year < 0)
             {
-                throw new SalariesDomainException("Year and Month of the salary must be greater than 0.");
+                throw new SalariesDomainException("Year must be greater than 0.");
             }
 
-            if (Year < this.BeginDate.Year)
+            if (Month < 1 || Month > 12)
             {
-                throw new SalariesDomainException("Year of the salary cannot be prior to the starting Year for the position.");
+                throw new SalariesDomainException("Month must be a value between 1 and 12 (both inclusive).");
+            }
+
+            if (Year < this.BeginDate.Year || (Year == this.BeginDate.Year && Month < this.BeginDate.Month))
+            {
+                throw new SalariesDomainException("Date of the salary cannot be prior to the starting Date for the position.");
             }
             return result;
         }

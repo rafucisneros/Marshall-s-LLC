@@ -19,10 +19,15 @@ namespace Salaries.Infrastructure
 
         }
 
-        public DbSet<Office> Offices { get; set; }
-        public DbSet<Division> Divisions { get; set; }
-        public DbSet<Position> Positions { get; set; }
-        public DbSet<Salary> Salaries { get; set; }
+        public SalariesContext() : base()
+        {
+
+        }
+
+        public virtual DbSet<Office> Offices { get; set; }
+        public virtual DbSet<Division> Divisions { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
+        public virtual DbSet<Salary> Salaries { get; set; }
 
         public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {

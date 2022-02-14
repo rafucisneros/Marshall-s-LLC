@@ -133,7 +133,6 @@ namespace Salaries.Infrastructure.Repositories
                 }
             }
 
-            // Possibly inefficient
             return query
                 .OrderBy(s => s.EmployeeCode)
                 .ThenByDescending(s => s.BeginDate)
