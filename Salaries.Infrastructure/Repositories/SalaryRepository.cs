@@ -39,7 +39,21 @@ namespace Salaries.Infrastructure.Repositories
             Salary result = null;
             if (salary.IsValidSalary())
             {
-                result = _context.Add(salary).Entity;
+                int count = _context.Salaries.Count(s =>
+                    // Only one salary per month-year
+                    (s.Month == salary.Month && s.Year == salary.Year && s.EmployeeCode == salary.EmployeeCode) 
+                    // Only one employee with same full name
+                    || (s.EmployeeName == salary.EmployeeName && s.EmployeeSurname == salary.EmployeeSurname && s.EmployeeCode != salary.EmployeeCode)
+                    );
+                if (count == 0)
+                {
+                    result = _context.Add(salary).Entity;
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    throw new SalariesDomainException("Invalid Salary. Check for users with the same full name or salaries for the same month of the year.");
+                }
             }
             return result;
         }
@@ -49,7 +63,19 @@ namespace Salaries.Infrastructure.Repositories
             Salary result = null;
             if (salary.IsValidSalary())
             {
-                result = _context.Update(salary).Entity;
+                int count = _context.Salaries.Count(s =>
+                    // Only one salary per month-year
+                    (s.Month == salary.Month && s.Year == salary.Year && s.EmployeeCode == salary.EmployeeCode && s.Id != salary.Id)
+                );
+                if (count == 0)
+                {
+                    result = _context.Update(salary).Entity;
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    throw new SalariesDomainException("Invalid Salary. Check for users with the same full name or salaries for the same month of the year.");
+                }
             }
             return result;
         }

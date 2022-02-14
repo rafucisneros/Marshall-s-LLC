@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Salaries.Domain.AggregatesModel.SalaryAggregate;
+using Salaries.Domain.Exceptions;
 using Salaries.Infrastructure.Repositories;
 
 namespace Salaries.API.Controllers
@@ -25,6 +26,34 @@ namespace Salaries.API.Controllers
             [FromQuery] int page=1, [FromQuery] int pageSize=20)
         {
             List<TotalSalary> result = _repository.TotalSalariesReport(filters, page, pageSize);
+            return result;
+        }
+
+        [HttpPost]
+        [Route("AddOrUpdateSalary")]
+        public Salary AddOrUpdateSalary([FromBody] Salary salary = default)
+        {
+            // If id is null, it is a new salary
+            Salary result = null;
+            try
+            {
+                if (salary.Id == 0)
+                {
+                    result = _repository.Add(salary);
+                }
+                else
+                {
+                    result = _repository.Update(salary);
+                }
+            }
+            catch (SalariesDomainException ex)
+            {
+                Console.Write(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
+            }
             return result;
         }
     }

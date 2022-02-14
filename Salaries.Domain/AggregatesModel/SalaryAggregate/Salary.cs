@@ -47,11 +47,11 @@ namespace Salaries.Domain.AggregatesModel.SalaryAggregate
         {
             bool result = true;
             if (
-                this.BaseSalary <= 0
-                || this.ProductionBonus <= 0
-                || this.CompensationBonus <= 0
-                || this.Commission <= 0
-                || this.Contributions <= 0
+                this.BaseSalary < 0
+                || this.ProductionBonus < 0
+                || this.CompensationBonus < 0
+                || this.Commission < 0
+                || this.Contributions < 0
             )
             {
                 throw new SalariesDomainException("Invalid value for a salary, bonuses, commission or contributions");
